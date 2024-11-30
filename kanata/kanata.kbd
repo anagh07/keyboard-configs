@@ -1,0 +1,53 @@
+(defcfg
+  ;; Linux
+  ;; linux-dev /dev/input/by-id/YOUR_KEYBOARD_ID_HERE
+  ;; linux-continues-as-held yes
+  ;; process-unmapped-keys yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            rctl
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(deflayer base
+  grv  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @a   @s   @d   @f   g    h    @j   @k   @l   @;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet @nav           spc            rctl
+)
+
+(deflayer navigation
+  grv  f1   f2   f3   f4   f5   f6   f7   f8    f9     f10   f11  f12
+  tab  q    w    e    r    t    y    u    pgup  pgdn      p     [    ]    \
+  esc  @a   @s   @d   @f   g    left down up    right  end   '    ret
+  lsft z    x    c    v    b    home m    ,     .      /     rsft
+  lctl lmet lalt           spc            rctl
+)
+
+;; Home row mods - tap for normal key, hold for modifier
+(defalias
+  ;; Left-hand home row mods
+  a (tap-hold-press $tap-time $hold-time a lmet)  ;; tap: a    hold: left meta (Windows/Command)
+  s (tap-hold-press $tap-time $hold-time s lalt)  ;; tap: s    hold: left alt
+  d (tap-hold-press $tap-time $hold-time d lsft)  ;; tap: d    hold: left shift
+  f (tap-hold-press $tap-time $hold-time f lctl)  ;; tap: f    hold: left control
+
+  ;; Right-hand home row mods
+  j (tap-hold-press $tap-time $hold-time j rctl)  ;; tap: j    hold: right control
+  k (tap-hold-press $tap-time $hold-time k rsft)  ;; tap: k    hold: right shift
+  l (tap-hold-press $tap-time $hold-time l ralt)  ;; tap: l    hold: right alt
+  ; (tap-hold-press $tap-time $hold-time ; rmet)  ;; tap: ;    hold: right meta (Windows/Command
+
+  ;; Navigation layer toggle
+  nav (layer-while-held navigation)  ;; Right Alt toggles navigation layer
+)
