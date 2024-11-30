@@ -14,7 +14,7 @@
 )
 
 (defvar
-  tap-time 150
+  tap-time  200
   hold-time 200
 )
 
@@ -37,16 +37,16 @@
 ;; Home row mods - tap for normal key, hold for modifier
 (defalias
   ;; Left-hand home row mods
-  a (tap-hold-press $tap-time $hold-time a lmet)  ;; tap: a    hold: left meta (Windows/Command)
-  s (tap-hold-press $tap-time $hold-time s lalt)  ;; tap: s    hold: left alt
-  d (tap-hold-press $tap-time $hold-time d lsft)  ;; tap: d    hold: left shift
-  f (tap-hold-press $tap-time $hold-time f lctl)  ;; tap: f    hold: left control
+  a (tap-hold $tap-time $hold-time a lmet)  ;; tap: a    hold: left meta (Windows/Command)
+  s (tap-hold $tap-time $hold-time s lalt)  ;; tap: s    hold: left alt
+  d (tap-hold $tap-time $hold-time d lsft)  ;; tap: d    hold: left shift
+  f (tap-hold $tap-time $hold-time f lctl)  ;; tap: f    hold: left control
 
   ;; Right-hand home row mods
-  j (tap-hold-press $tap-time $hold-time j rctl)  ;; tap: j    hold: right control
-  k (tap-hold-press $tap-time $hold-time k rsft)  ;; tap: k    hold: right shift
-  l (tap-hold-press $tap-time $hold-time l ralt)  ;; tap: l    hold: right alt
-  ; (tap-hold-press $tap-time $hold-time ; rmet)  ;; tap: ;    hold: right meta (Windows/Command
+  j (tap-hold $tap-time $hold-time j rctl)  ;; tap: j    hold: right control
+  k (tap-hold $tap-time $hold-time k rsft)  ;; tap: k    hold: right shift
+  l (tap-hold $tap-time $hold-time l ralt)  ;; tap: l    hold: right alt
+  ; (tap-hold $tap-time $hold-time ; rmet)  ;; tap: ;    hold: right meta (Windows/Command
 
   ;; Navigation layer toggle
   nav (layer-while-held navigation)  ;; Right Alt toggles navigation layer
